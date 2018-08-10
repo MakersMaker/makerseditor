@@ -1,0 +1,256 @@
+@import "../../webui/RichDropdown.css";
+
+.runBarWrapper {
+	-webkit-align-items: center;		 		 /* Safari */
+	align-items: center;
+	border-left: solid 1px #676f73;
+	border-right: solid 1px #676f73;
+	display: -webkit-inline-flex;		 /* Safari */
+	display: inline-flex;
+	overflow: visible;
+	padding: 0 10px;
+}
+
+.runBarWrapper .disabled {
+	opacity: 0.30;
+	pointer-events: none;
+}
+
+.runBarWrapper .disabled:hover {
+	opacity: 0.30;
+	cursor: default;
+}
+
+.runBarWrapper .appLink {
+	text-decoration: none;
+}
+
+.runBarWrapper .logsLink {
+	text-decoration: none;
+}
+
+.orionSwitchWrapper .disabled {
+	cursor: default;
+}
+
+.launchConfigurationsWrapper {
+	border-radius: 5px;
+	display: inline-block;
+	margin: 0 8px 0 0;
+	min-width: 270px;
+	transition: opacity 0.3s ease;
+}
+
+.launchConfigurationsWrapper > .launchConfigurationsButton.dropdownTrigger {
+	background: #37474F;
+	border-radius: 5px;
+	padding: 2px 0 2px 4px;
+	width: 300px;
+}
+
+.launchConfigurationsWrapper > .dropdownMenuOpen {
+	min-width: 300px;
+}
+
+.launchConfigurationsButton {
+	align-items: center;
+	display: flex !important;
+	flex-direction: row;
+}
+
+.launchConfigurationsButton > .dropdownTriggerButtonLabel {
+	-webkit-align-items: center;		 		 /* Safari */
+	align-items: center;
+	display: -webkit-inline-flex;		 /* Safari */
+	display: inline-flex;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	vertical-align: top;
+	white-space: nowrap;
+	width: calc(100% - 20px);
+}
+
+.launchConfigurationsButton > .dropdownArrowDown {
+	vertical-align: bottom;
+}
+
+.launchConfigurationsWrapper > .dropdownMenu {
+	display: none;
+}
+
+.launchConfigurationsWrapper > .dropdownMenu.dropdownMenuOpen {
+	display: block;
+}
+
+.launchConfigurationMenuItem > .dropdownMenuItem {
+	padding: 9px 3px 9px 5px;
+}
+
+.launchConfigurationMenuItem.dropdownMenuItemActive {
+	background-color: #DEF7D9;
+}
+
+.dropdownMenu.dropdownMenuOpen > li > .addNewMenuItem {
+	background-color: whitesmoke;
+	border-left-color: transparent;
+	cursor: default;
+	padding-left: 0;
+}
+
+.addNewMenuItem > .orionButton {
+	font-size: 16px;
+	font-weight: bold;
+	padding-bottom: 6px;
+}
+
+.launchConfigurationDeleteButton.orionButton {
+
+}
+
+.runBarWrapper .runBarButton {
+	background: none;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	margin: 0 2px;
+	outline: none;
+	padding: 1px;
+	transition: opacity 0.3s ease;
+	cursor: pointer;
+}
+
+.runBarWrapper .runBarButton:not(.disabled):hover {
+	border-color: #ccc;
+	box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+}
+
+.runBarWrapper .runBarButton:before {
+	display: block;
+	height: 18px;
+	line-height: 18px;
+	margin-top: -3px;
+}
+
+.runBarWrapper .logStatusProgress {
+  border: 1px solid #3C71B3;
+  animation: 2s animateBorder linear infinite forwards;
+}
+
+/* WebKit prefix recommended for legacy browsers */
+@-webkit-keyframes animateBorder {
+  0%, 100% {
+    border-top-color: transparent;
+    border-left-color:  #3C71B3;
+  }
+  25% {
+    border-right-color: transparent;
+    border-top-color:  #3C71B3;
+  }
+  50% {
+    border-bottom-color: transparent;
+    border-right-color:  #3C71B3;
+  }
+  75% {
+    border-left-color: transparent;
+    border-bottom-color:  #3C71B3;
+  }
+}
+
+@keyframes animateBorder {
+  0%, 100% {
+    border-top-color: transparent;
+    border-left-color:  #3C71B3;
+  }
+  25% {
+    border-right-color: transparent;
+    border-top-color:  #3C71B3;
+  }
+  50% {
+    border-bottom-color: transparent;
+    border-right-color:  #3C71B3;
+  }
+  75% {
+    border-left-color: transparent;
+    border-bottom-color:  #3C71B3;
+  }
+}
+
+.statusLabel {
+	color: #222;
+	margin-right: 10px;
+	transition: opacity 0.3s ease;
+}
+
+.statusLight {
+	-webkit-flex-grow: 0;		/* Safari */
+	flex-grow: 0;
+	-webkit-flex-shrink: 0;		/* Safari */
+	flex-shrink: 0;
+	
+	background: #707070;
+	border: 2px solid transparent;
+	border-radius: 100%;
+	display: inline-block;
+	height: 8px;
+	margin-right: 5px;
+	width: 8px;
+	transition: background 0.2s ease, opacity 0.3s ease;
+	vertical-align: bottom;
+}
+
+.statusLight.statusLightGreen {
+	background: #13dd6d;
+}
+
+.statusLight.statusLightRed {
+	background: #C1272D;
+}
+
+.statusLight.statusLightAmber {
+	background: #FFE141;
+}
+
+.statusLight.statusLightProgress {
+	background: none;
+	border-color: #707070;
+	border-top-color: transparent;
+	
+	-webkit-animation: rotate 1s infinite linear;
+	-moz-animation: rotate 1s infinite linear;
+	-ms-animation: rotate 1s infinite linear;
+	-o-animation: rotate 1s infinite linear;
+	animation: rotate 1s infinite linear;
+}
+
+.runBarSeparator {
+	background: #676f73;
+	display: inline-block;
+	height: 25px;
+	margin: 0 10px;
+	position: relative;
+    width: 1px;
+}
+
+.appName {
+	color: white;
+	-webkit-flex-grow: 0;		/* Safari */
+	flex-grow: 0;
+	-webkit-flex-shrink: 1;		/* Safari */
+	flex-shrink: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.appInfoSpan {
+	color: white;
+	-webkit-flex-grow: 0;		/* Safari */
+	flex-grow: 0;
+	-webkit-flex-shrink: 0;		/* Safari */
+	flex-shrink: 0;
+	overflow: hidden;
+	margin-left: 4px;
+	max-width: 50%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+

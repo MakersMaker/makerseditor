@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2014." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Pluggable Editor Demo</title>
+	    <link rel="stylesheet" type="text/css" href="editorBuild/code_edit/built-codeEdit.css"/>
+	    <link rel="stylesheet" type="text/css" href="demo.css"/>
+		<script src="editorBuild/requirejs/require.min.js"></script>
+		<script>
+    	/*eslint-env browser, amd*/
+	    require.config({
+	        bundles: {
+	            "editorBuild/code_edit/built-codeEdit-amd": ["orion/codeEdit", "orion/editor/editor", "orion/editor/textView", "orion/editor/textModel", "orion/editor/projectionTextModel", "orion/keyBinding", "orion/editor/textStyler", "orion/editor/contentAssist", "orion/editor/editorFeatures", "orion/editor/textTheme", "orion/Deferred"],
+	        }	    
+	    });
+    	require(["orion/codeEdit", "orion/Deferred"], function(mCodeEdit, deferred) {
+			var codeEdit = new mCodeEdit();
+			var contents = 'var foo = "bar";\n' +
+								 "var bar = foo;\n" + 
+								 "/*\n" + 
+								 " * test demo\n" + 
+								 "*/\n" + 
+								 "function test(){\n" + 
+								 "	var foo1 = bar.lastIndexOf(char, from);\n" + 
+								 "}\n" + 
+								"//Keep editing in this demo and try the content assist, problem validations and hover service!\n" +
+								 "var foo2 = foo."; 
+			var contents1 = 
+								 '<div class="embeddedEditorParentOuter" id="embeddedEditor1">\n' + 
+								 "</div>\n" + 
+								 "<span>var foo2</span>"; 
+			
+			var par1 = document.getElementById("embeddedEditor");
+			var par2 = document.getElementById("embeddedEditor1");
+			
+			codeEdit.create({parent: par1}).then(function(editorViewer) {
+				document.getElementById("progressMessageDiv").textContent = "Plugins loaded!";
+				editorViewer.setContents(contents, "application/javascript");
+			});
+			codeEdit.create({parent: par2,
+								   contentType: "text/html",
+								   contents: contents1});
+		});
+		</script>
+    </head>
+	<body id="orion-browser" spellcheck="false" class="orionPage">
+		<div class="embeddedEditorDemoTextParent">
+			<p>This is a demo for the <b>Orion pluggable editor</b> widget. This demo consumes the <b>built version</b> of the widget.</p> 
+			<p>Keep editing in this demo and try:</p>
+			<ol>
+				<li>Content assist. E.g., put cursor after "foo." at the last line and press CTRL+space.</li>
+				<li>Problem validations. E.g., modify something and you will see new validation markers coming up, if any.</li>
+				<li>Hover service. Hover on any error markers or inside the editor.</li>
+				<li>Syntax highlighting.</li>
+				<li>Quick fix. Hover on a problem inside the editor, not on the ruler, e.g., (char, from) in this demo. Click on the quick fix and see.</li>
+				<li>Find declaration. Select a variable and press F3.</li>
+				<li>New tooling features coming while Orion is being improved...</li>
+			</ol>
+		</div>
+		<div class="embeddedEditorDemoTextParent">
+			<span id = "progressMessageDiv" style="color: green">Loading language tooling plugins...</span>
+		</div>
+		<div class="embeddedEditorParentOuter" id="embeddedEditor">
+		</div>
+		<div class="embeddedEditorParentOuter" id="embeddedEditor1">
+		</div>
+	</body>
+</html>

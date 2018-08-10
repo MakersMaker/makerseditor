@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2014." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="icon" href="../../images/edit.png" type="image/png">
+		<title>View Git Commit Details</title>
+	    <link rel="stylesheet" type="text/css" href="../built/built-commitBrowser.css"/>
+	    <link rel="stylesheet" type="text/css" href="../demo.css"/>
+		<script src="../built/built-commitBrowser.js"></script>
+		<script>
+		window.onload=function(){
+			var commitBrowser = new orion.git.commitBrowser("commitBrowser", "../../git/plugins/gitPlugin.html");
+			commitBrowser.startup().then(function() {
+				//How to get the 2th, 3th and 4th parameters for demo
+				//Open the git repository page, select a commit from the history section
+				//In the debugger, set a break point at the first line at GitRepositoryExplorer.prototype.displayDiffs function in GitRepositoryExplorer.js
+				//Inspect "commit" param
+				//2th param: commit.DiffLocation
+				//3th param: commit.Parents[0].Name
+				//4th param: commit.Name (optional)
+				commitBrowser.displayCommit(null, "/gitapi/diff/d7cb9bb433a8fab1a509e4acb7cf059da8635a2d/file/libingw-OrionContent/OrionClient/", 
+				"815951d96103ca75245f0849cc26afc24581dbb4", "d7cb9bb433a8fab1a509e4acb7cf059da8635a2d"); 
+			});
+		};
+		</script>
+    </head>
+	<body id="orion-browser" spellcheck="false">
+		<div class="fileBrowserDemoTextParent">
+			<p>This is a demo for the <b>stand alone</b> git commit browse widget. This demo consumes the <b>build version</b> of the widget.</p> 
+		</div>
+		<div class="fileBrowserParent" id="commitBrowser">
+		</div>
+	</body>
+</html>

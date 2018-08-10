@@ -1,0 +1,55 @@
+.siteEditorTable {
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none; /*required so .hostingStatusArea can override*/
+	user-select: none;
+}
+
+.hostingStatusArea {
+	-webkit-user-select: text;
+	-moz-user-select: text;
+	user-select: text;
+}
+
+.siteEditorTable .cell, .siteEditorTable .header {
+	padding: 10px 10px 10px 20px;
+	display: inline-block;
+}
+.siteEditorTable .header {
+	text-align: left;
+}
+
+.siteEditorTable .cell {
+	width: 70%;
+}
+
+.siteEditorTable .header {
+	vertical-align: top;
+	width: 20%;
+}
+.siteEditorTable td {
+	vertical-align: middle;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+.navColumn {
+	font-weight: bold;
+	padding-top: 8px;
+}
+.isValidColumn {
+	min-width: 32px;
+	width: 40px;
+}
+.isValidCell {
+	text-align: center;
+	vertical-align: middle;
+}
+.pathInput, .serverPathInput {
+	min-width: 20em;
+}
+.addMappingToolbar {
+	padding-top: 15px;
+}
+.siteForm {
+	display: table;
+}
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2011, 2017." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<link rel="icon" href="../images/sites.png" type="image/png">
+		<title>Edit Site</title>
+		<link rel="stylesheet" type="text/css" href="site.css" />
+		<script src="../requirejs/require.js"></script>
+		<script>
+		/*eslint-env browser, amd*/
+		require({
+			  baseUrl: '..',
+			  packages: [],
+			  paths: {
+				  text: 'requirejs/text',
+				  i18n: 'requirejs/i18n',
+				  domReady: 'requirejs/domReady'	    
+			  }
+			});
+		
+		require(["sites/site"]);
+		</script>
+	</head>
+	
+	
+	<body id="orion-site" class="orionPage lightPage">
+		<nav id="sideMenu" class="sideMenu"></nav>
+		<div id="pageContent" class="content-fixedHeight">
+			<div id="sideMenuToggle" class="sideMenuToggle"></div>
+			<div class="fixedToolbarHolder mainpane mainPanelLayout">
+				<section id="pageToolbar" class="mainToolbar toolComposite toolbarLayout"></section>
+				<main id="mainNode" class="toolbarTarget pageLayoutTarget">
+					<div id="site" class="displayTable sitePanel" style="padding-bottom: 20px;">
+					</div>
+				</main>
+			</div>
+		</div>
+		<div class="footer-fixed-bottom footer" id="footer">
+		</div>
+		<script>
+			var themeVal = localStorage.getItem("pageTheme");
+			if (themeVal && typeof themeVal === "string" || themeVal instanceof String && themeVal.length > 0) {
+				themeVal.split(" ").forEach(function(clazz) {
+					if (!document.body.classList.contains(clazz)) {
+						document.body.classList.add(clazz);
+					}
+				});
+			}
+		</script>
+	</body>	
+</html>

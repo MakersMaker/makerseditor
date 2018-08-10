@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (C) 2013, 2015 SAP AG and others.
+
+   All rights reserved. This program and the accompanying materials
+   are made available under the terms of the Eclipse Public License v1.0
+   which accompanies this distribution, and is available at
+   http://www.eclipse.org/legal/epl-v10.html
+
+   Contributors:
+      Matthias Sohn - initial implementation
+      IBM Corporation - Updated for Orion 6.0
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<prerequisites>
+		<maven>3.0</maven>
+	</prerequisites>
+
+	<groupId>org.eclipse.orion</groupId>
+	<artifactId>org.eclipse.orion.client.parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>Orion Client Parent</name>
+
+	<mailingLists>
+		<mailingList>
+			<name>orion-dev Mailing List</name>
+			<post>orion-dev@eclipse.org</post>
+			<subscribe>https://dev.eclipse.org/mailman/listinfo/orion-dev</subscribe>
+			<unsubscribe>https://dev.eclipse.org/mailman/listinfo/orion-dev</unsubscribe>
+			<archive>http://dev.eclipse.org/mhonarc/lists/orion-dev</archive>
+		</mailingList>
+	</mailingLists>
+
+	<issueManagement>
+		<url>https://bugs.eclipse.org/bugs/buglist.cgi?query_format=advanced;product=Orion;classification=Eclipse</url>
+		<system>Bugzilla</system>
+	</issueManagement>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License v1.0</name>
+			<comments>
+       All rights reserved.
+
+       This program and the accompanying materials are made
+       available under the terms of the Eclipse Public License v1.0
+       which accompanies this distribution, and is available at
+       http://www.eclipse.org/legal/epl-v10.htm
+      </comments>
+		</license>
+	</licenses>
+
+	<properties>
+		<orion-version>1.0.0-SNAPSHOT</orion-version>
+		<tycho-version>0.22.0</tycho-version>
+		<tycho-extras-version>0.22.0</tycho-extras-version>
+		<tycho.scmUrl>scm:git:http://git.eclipse.org/gitroot/orion/org.eclipse.orion.client.git</tycho.scmUrl>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-version>[1.7, 1.8]</java-version>
+		<requirejsDir>${basedir}/target/requirejs</requirejsDir>
+		<requirejsVersion>2.1.18</requirejsVersion>
+		<nodejsHome>${basedir}/target/nodejs</nodejsHome>
+		<jsdocHome>${basedir}/target/jsdoc</jsdocHome>
+		<antrun-version>1.7</antrun-version>
+		<build-version>13.0.0-v${maven.build.timestamp}</build-version>
+		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
+	</properties>
+
+	<distributionManagement>
+		<repository>
+			<id>repo.eclipse.org</id>
+			<name>Orion Repository - Releases</name>
+			<url>https://repo.eclipse.org/content/repositories/orion-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>repo.eclipse.org</id>
+			<name>Orion Repository - Snapshots</name>
+			<url>https://repo.eclipse.org/content/repositories/orion-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<dependencies>
+	</dependencies>
+
+	<repositories>
+		<repository>
+			<id>eclipse-license</id>
+			<layout>p2</layout>
+			<url>http://download.eclipse.org/cbi/updates/license</url>
+		</repository>
+  </repositories>
+
+	<modules>
+		<module>bundles/org.eclipse.orion.client.core</module>
+		<module>bundles/org.eclipse.orion.client.help</module>
+		<module>bundles/org.eclipse.orion.client.jsdoc</module>
+		<module>bundles/org.eclipse.orion.client.editor</module>
+		<module>bundles/org.eclipse.orion.client.webtools</module>
+		<module>bundles/org.eclipse.orion.client.javascript</module>
+		<module>bundles/org.eclipse.orion.client.debug</module>
+		<module>bundles/org.eclipse.orion.client.git</module>
+		<module>bundles/org.eclipse.orion.client.cf</module>
+		<module>bundles/org.eclipse.orion.client.ui</module>
+		<module>bundles/org.eclipse.orion.client.users</module>
+
+		<module>features/org.eclipse.orion.client-feature</module>
+
+		<module>releng/org.eclipse.orion.client.releng</module>
+		<module>releng/org.eclipse.orion.client.repository</module>
+	</modules>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<source>${java-version}</source>
+					<target>${java-version}</target>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<version>2.10</version>
+				<executions>
+					<execution>
+						<id>unpack</id>
+						<inherited>false</inherited>
+						<phase>verify</phase>
+						<goals>
+							<goal>unpack</goal>
+						</goals>
+						<configuration>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.webjars</groupId>
+									<artifactId>requirejs-node</artifactId>
+									<version>${requirejsVersion}</version>
+									<type>jar</type>
+									<overWrite>false</overWrite>
+									<outputDirectory>${requirejsDir}</outputDirectory>
+									<includes>**/*.js</includes>
+								</artifactItem>
+							</artifactItems>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-jsdocs-and-minify-javascript</id>
+						<inherited>false</inherited>
+						<phase>verify</phase>
+						<configuration>
+							<target unless="orion.client.build.skip">
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath" />
+								<property name="builder"        value="${basedir}/releng/org.eclipse.orion.client.releng/builder/"/>
+								<property name="requirejsHome"  value="${requirejsDir}/META-INF/resources/webjars/requirejs-node/${requirejsVersion}"/>
+								<property name="nodejsHome"     value="${nodejsHome}"/>
+								<property name="buildConfig"    value="${builder}/scripts/orion.build.js" />
+								<property name="buildDirectory" value="${basedir}"/>
+								<property name="orionClient"    value="${buildDirectory}"/>
+
+								<!-- generate jsdocs -->
+								<property name="jsdocHome"
+									value="${jsdocHome}"/>
+								<ant antfile="${basedir}/releng/org.eclipse.orion.client.releng/builder/orion.jsdoc.xml">
+									<target name="download3rdPartyLibs"/>
+									<target name="jsdocs"/>
+								</ant>
+
+							    <!-- minify javascript -->
+								<ant antfile="${basedir}/releng/org.eclipse.orion.client.releng/builder/orion.mini.xml">
+									<property name="requirejsHome" value="${requirejsHome}"/>
+								    <target name="updateBuildLabel"/>
+									<target name="requirejs"/>
+								</ant>
+
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>replace-build-token</id>
+						<phase>generate-sources</phase>
+						<configuration>
+							<target>
+								<taskdef resource="net/sf/antcontrib/antcontrib.properties" classpathref="maven.plugin.classpath" />
+								<if>
+									<available file="about.properties" />
+									<then>
+										<echo
+											message="Replacing @qualifier@ token within about.properties with build id ${build-version}" />
+										<replace file="about.properties">
+											<replacefilter token="@qualifier@"
+												value="${build-version}" />
+										</replace>
+									</then>
+								</if>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>ant-contrib</groupId>
+						<artifactId>ant-contrib</artifactId>
+						<version>20020829</version>
+						<exclusions>
+							<exclusion>
+								<groupId>ant</groupId>
+								<artifactId>ant</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+					<dependency>
+						<groupId>org.apache.ant</groupId>
+						<artifactId>ant-nodeps</artifactId>
+						<version>1.8.1</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-source-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<executions>
+						<execution>
+							<id>attach-source</id>
+							<goals>
+								<goal>plugin-source</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-packaging-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<configuration>
+						<format>'v'yyyyMMdd-HHmm</format>
+						<timestampProvider>jgit</timestampProvider>
+						<jgit.ignore>pom.xml
+						about.properties</jgit.ignore>
+						<jgit.dirtyWorkingTree>warning</jgit.dirtyWorkingTree>
+					</configuration>
+					<dependencies>
+						<dependency>
+							<groupId>org.eclipse.tycho.extras</groupId>
+							<artifactId>tycho-buildtimestamp-jgit</artifactId>
+							<version>${tycho-extras-version}</version>
+						</dependency>
+					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<version>2.5</version>
+					<configuration>
+						<encoding>ISO-8859-1</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${antrun-version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<profiles>
+		<!-- Profile controlling whether the nodejs-maven-plugin is used -->
+		<profile>
+			<id>nodejs</id>
+			<activation>
+				<property>
+					<name>!skipNodejs</name>
+				</property>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>com.github.skwakman.nodejs-maven-plugin</groupId>
+						<artifactId>nodejs-maven-plugin</artifactId>
+						<version>1.0.5-node-0.10.25</version>
+						<executions>
+							<execution>
+								<phase>package</phase>
+								<goals>
+									<goal>extract</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<targetDirectory>${nodejsHome}</targetDirectory>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+</project>

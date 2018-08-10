@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2014." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Pluggable Editor Demo</title>
+	    <link rel="stylesheet" type="text/css" href="editorBuild/code_edit/built-codeEdit.css"/>
+		<style type="text/css">
+			.demoTitle{
+				border: none;
+				vertical-align: middle;
+				overflow: hidden;
+				text-align: left;
+				margin-left: 15%;
+				margin-right: 15%;
+				padding-bottom: 5px;
+				position: relative;
+			}
+			.demoBody{
+				border: 1px solid;
+				vertical-align: middle;
+				border-color: blue;
+				overflow: hidden;
+				text-align: left;
+				margin-left: 15%;
+				margin-right: 15%;
+				margin-bottom: 15px;
+				padding-bottom: 5px;
+				position: relative;
+				height: 450px;
+			}
+			.orionPage {
+			    background-color: white;
+			    width: 100%;
+			    height: 100%;
+			}
+		</style>
+		<script src="editorBuild/code_edit/built-codeEdit.js"></script>
+		<script>
+			/*globals orion */
+			window.onload=function(){
+				var defaultPluginURLs = [
+					//"../javascript/plugins/javascriptPlugin.html",
+					//"../webtools/plugins/webToolsPlugin.html",
+					//"../plugins/embeddedToolingPlugin.html"
+				];
+				var codeEdit = new orion.codeEdit({ _defaultPlugins: defaultPluginURLs, userPlugins:["editorBuild/others/plugins/jslintPlugin.html", "editorBuild/others/plugins/languages/json/jsonPlugin.html"] });
+				var contents = '{foo: 123, bar: 234}'
+				codeEdit.create({parent: "embeddedEditor", contentType: "application/json", contents: contents}).then(function(editorViewer) {
+					document.getElementById("progressMessageDiv").textContent = "Plugins loaded!";
+					//You can call APIs from editorViewer.editor  for further actions.
+				});
+			};
+		</script>
+    </head>
+	<body id="orion-browser" spellcheck="false" class="orionPage">
+		<div class="demoTitle">
+			<p>This is a demo for the light-weight version of <b>Orion Code Edit</b> widget. This demo only consumes the <b>JSON tooling</b> of the widget. Copy and paste any JSON file contents here and see the validation and syntax highlighting</p> 
+		</div>
+		<div class="demoTitle">
+			<span id = "progressMessageDiv" style="color: green">Loading language tooling plugins...</span>
+		</div>
+		<div class="demoBody" id="embeddedEditor">
+		</div>
+	</body>
+</html>

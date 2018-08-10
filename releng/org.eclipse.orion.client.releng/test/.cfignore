@@ -1,0 +1,35 @@
+/.project
+bin
+
+.git/
+
+# Maven artifacts
+.maven/
+target/
+
+# Eclipse/OSGi info not needed for CF app
+.settings/
+META-INF/
+
+# Orion node artifacts
+.temp/
+.workspace/
+.test_workspace/
+
+# Source dirs, image resources not needed for CF app
+doc/
+features/
+*.gif
+*.png
+
+# Client build output and source maps
+built-js
+optimized
+staging
+*.map
+*.src
+built-*.js
+
+# Node/npm
+*.log
+node_modules/

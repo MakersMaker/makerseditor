@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>Console Plugin</title>
+		<script src="../orion/requireErrorHandler.js"></script>
+		<script src="../requirejs/require.js"></script>
+		<script>
+			/*eslint-env browser, amd*/
+			require(["../orion/require-config.js"], function(config){
+				require(["plugins/consolePlugin"], function(plugin){
+					plugin.connect();
+				}, self.errback);
+			}, self.errback);
+		</script>
+	</head>
+	<body>
+		<h1>Shell Plugin for Orion using tty.js</h1>
+	</body>
+</html>

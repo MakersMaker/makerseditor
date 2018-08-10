@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="copyright" content="Copyright (c) IBM Corporation and others 2013, 2017." >
+  <meta http-equiv="Content-Language" content="en-us">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>JavaScript Tools Mocha Tests</title>
+  <link rel="stylesheet" href="../../mocha/mocha.css" />
+  <script src="../../requirejs/require.js"></script>
+  <script>
+	/*eslint-env amd, mocha*/
+	/* eslint-disable missing-nls */
+	require({
+		baseUrl: '../../',
+		paths: {
+			text: 'requirejs/text',
+			json: "requirejs/json", 
+			i18n: 'requirejs/i18n',
+			domReady: 'requirejs/domReady'
+		}
+	});
+	require(['mocha/sauce'], function(testSuite) {
+		mocha.setup('bdd');
+		require([
+				"js-tests/javascript/testingWorker",
+				'js-tests/javascript/crossFileTests',
+				'js-tests/javascript/dependencyTests',
+				'js-tests/javascript/finderTests',
+				'js-tests/javascript/occurrencesTests',
+				'js-tests/javascript/es6OccurrencesTests',
+				'js-tests/javascript/es7OccurrencesTests',
+				'js-tests/javascript/es7AssistTests',
+				'js-tests/javascript/astOutlinerTests',
+				'js-tests/javascript/outlinerTests',
+				'js-tests/javascript/es6OutlinerTests',
+				'js-tests/javascript/commonJsValidatorTests',
+				'js-tests/javascript/nodeValidatorTests',
+				'js-tests/javascript/validatorTests',
+				'js-tests/javascript/lruTests',
+				'js-tests/javascript/quickfixTests',
+				'js-tests/javascript/quickfixGlobalTests',
+				'js-tests/javascript/es6QuickfixTests',
+				'js-tests/javascript/eslintCoreTests',
+				'js-tests/javascript/eslintHoverTests',
+				'js-tests/javascript/scriptResolverTests',
+				'js-tests/javascript/sigparserTests',
+				'js-tests/javascript/es6ValidatorTests',
+				'js-tests/javascript/computedEnvTests',
+				'js-tests/javascript/packageJsonHoverTests'
+				], function(worker, crossFileTests, dependencyTests, finderTests, 
+							occurrencesTests, es6OccurrencesTests, es7OccurrencesTests, es7AssistTests, astOutlinerTests, 
+							outlinerTests, es6OutlinerTests, commonJsValidatorTests, nodeValidatorTests, validatorTests, 
+							lruTests, quickfixTests, quickfixGlobalTests, es6QuickfixTests, eslintCoreTests, eslintHoverTests, 
+							scriptResolverTests, sigparserTests, es6ValidatorTests, computedEnvTests, packageJsonHoverTests) {
+					var testworker;
+					before("reset timeout", function(done) {
+						this.timeout(30000);
+						testworker.start(done);
+					});
+					after("stop the worker", function() {
+						if(testworker) {
+							testworker.terminate();
+						}
+					});
+					testworker = worker.instance({delayedStart: true});
+					// TODO Skip for now, potential to stall out the tests
+//					crossFileTests(testworker);
+					dependencyTests(testworker);
+					eslintCoreTests(testworker);
+					eslintHoverTests(testworker);
+					finderTests(testworker);
+					lruTests(testworker);
+					occurrencesTests(testworker);
+					es6OccurrencesTests(testworker);
+					es7OccurrencesTests(testworker);
+					es7AssistTests(testworker);
+					astOutlinerTests(testworker);
+					outlinerTests(testworker);
+					es6OutlinerTests(testworker);
+					quickfixTests(testworker);
+					quickfixGlobalTests(testworker);
+					es6QuickfixTests(testworker);
+					scriptResolverTests(testworker);
+					sigparserTests(testworker);
+					commonJsValidatorTests(testworker);
+					nodeValidatorTests(testworker);
+					validatorTests(testworker);
+					es6ValidatorTests(testworker);
+					computedEnvTests(testworker);
+					packageJsonHoverTests(testworker);
+					testSuite.run();
+		});
+	});
+  </script>
+</head>
+<body>
+	<div id="mocha">
+		<h1>JavaScript Tools Tests</h1>
+	</div>
+</body>
+</html>

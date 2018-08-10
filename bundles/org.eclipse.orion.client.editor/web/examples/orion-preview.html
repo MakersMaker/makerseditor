@@ -1,0 +1,136 @@
+<div class="editorSection" role="img" aria-labelledby="themePreviewTitle" >
+	<div id="themePreviewTitle" class="editorSectionHeader" style="padding-top: 12px; padding-bottom: 11.5px;"><span>${Theme Preview}</span></div>
+	<div id="containerPreview" style="position: absolute; margin: 4px; height: 90%; width: 90%;">
+		<div id="orion-editor" spellcheck="false" class="orionPage lightPage">
+			<div class="sideMenu" aria-label="${Sidebar}" style="top: 0;">
+				<div class="sideMenuHome"></div>
+				<button class="sideMenuScrollButton sideMenuTopScrollButton core-sprite-openarrow" tabindex="-1"></button>
+				<ul class="sideMenuList">
+					<li class="sideMenuItem sideMenu-notification sideMenuItemActive"><a class="submenu-trigger core-sprite-edit" aria-label="${EditorPage}" aria-current="page" href="#" tabindex="-1"></a></li>
+					<li class="sideMenuItem sideMenu-notification"><a class="submenu-trigger core-sprite-git-logo" aria-label="${Git}" href="#" tabindex="-1"></a></li>
+					<li class="sideMenuItem sideMenu-notification"><a class="submenu-trigger core-sprite-shell" aria-label="${Shell}" href="#" tabindex="-1"></a></li>
+					<li class="sideMenuItem sideMenu-notification"><a class="submenu-trigger core-sprite-sites" aria-label="${Sites}" href="#" tabindex="-1"></a></li>
+					<li class="sideMenuItem sideMenu-notification"><a class="submenu-trigger core-sprite-gear" aria-label="${Settings}" href="#" tabindex="-1"></a></li>
+				</ul>
+				<button class="sideMenuScrollButton sideMenuBottomScrollButton core-sprite-openarrow" tabindex="-1"></button>
+			</div>
+			<div class="content-fixedHeight" style="top: 0;">
+				<div class="sideMenuToggle"></div>
+				<div class="mainToolbar toolComposite toolbarLayout">
+					<ul role="menubar" class="commandList layoutLeft pageActions">
+						<li role="none">
+							<button class="dropdownTrigger orionButton commandButton" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+								${File}
+							</button>
+						</li>
+					</ul>
+					<ul class="commandList layoutLeft pageActions">
+						<li role="none">
+							<button class="dropdownTrigger orionButton commandButton" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+								${Edit}
+							</button>
+						</li>
+					</ul>
+					<ul class="commandList layoutLeft pageActions">
+						<li role="none">
+							<button class="dropdownTrigger orionButton commandButton" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+								${View}
+							</button>
+						</li>
+					</ul>
+					<ul class="commandList layoutLeft pageActions">
+						<li role="none">
+							<button class="dropdownTrigger orionButton commandButton" aria-haspopup="true" aria-expanded="false" tabindex="-1">
+								${Tools}
+							</button>
+						</li>
+					</ul>
+					<ul id="extraActions" class="commandList layoutLeft pageActions extraActions"></ul>
+					<div class="layoutLeft runBar">
+						<div id="runBarWrapper" class="runBarWrapper">
+							<div class="launchConfigurationsWrapper" style="border-radius:5px; display: inline-block; margin: 0 8px 0 0; min-width 270 px; z-index: 60">
+								<button class="dropdownTrigger orionButton commandButton launchConfigurationsButton" style="border-radius: 5px" tabindex="-1">
+								<span class="dropdownTriggerButtonLabel" style="align-items: center; display: inline-flex; overflow:hidden; text-overflow: ellipsis; vertical-align: top; white-space:nowrap">${Create new launch configuration}</span>
+								<span class="dropdownArrowDown core-sprite-openarrow"></span>
+								</button>
+							</div>
+							<button id="runBarPlayButton" class="commandImage playButton core-sprite-play" aria-label="${Deploy}" tabindex="-1"></button>
+							<button id="runBarStopButton" class="commandImage stopButton core-sprite-stop" aria-label="${Stop}" tabindex="-1"></button>
+							<a id="runBarAppLink" class="commandImage appLink core-sprite-open" target="_blank" href="#" aria-label="${Open App}" tabindex="-1"></a>
+							<a id="runBarLogsLink" class="commandImage logsLink core-sprite-runlogs" target="_blank" href="#" aria-label="${Logs}" tabindex="-1"></a>
+						</div>
+					</div>
+					<div class="layoutFlexStretch"></div>
+					<div class="layoutRight status"></div>
+					<button class="layoutRight progressWatch" aria-label="${Operations}" tabindex="-1">
+						<div class="watchButton"></div>
+						<div class="watchBody">
+							<span class="hand longMinute">
+							<span class="darkSide"></span>
+							</span>
+							<span class="hand longHour">
+							<span class="darkSide"></span>
+							</span>
+						</div>
+					</button>
+					<ul class="layoutRight commandList pageActions"></ul>
+					<ul class="layoutRight commandList pageActions">
+						<li>
+							<button class="dropdownTrigger dropdownButtonWithIcon commandImage orionButton" aria-label="${Single Page}" tabindex="-1"><span class="commandSprite core-sprite-page"></span></button>
+						</li>
+					</ul>
+					<ul class="layoutRight commandList pageActions userMenu">
+						<li>
+							<button class="dropdownTrigger commandImage" aria-label="${Help}" tabindex="-1">
+							<span class="commandSprite core-sprite-silhouette"></span>
+							</button>
+						</li>
+					</ul>
+				</div>
+				<div class="innerPanels">
+					<div class="auxpane sidePanelLayout hasSplit" style="position: absolute; top: auto; bottom: auto; height: 100%; left: 0px; right: auto; width: 497px; visibility: visible; display: block;">
+						<div class="fixedToolbarHolder sidebarWrapper desktopmode">
+							<span class="sidebarToolbar mainToolbar toolComposite toolbarLayout">
+								<div class="filesystemSwitcherWrapper">
+									<div class="filesystemName">${Orion Content (localhost)}</div>
+									<ul class="filesystemSwitcher commandList pageActions">
+										<li>
+											<button class="dropdownTrigger dropdownButtonWithIcon commandImage orionButton" aria-label="${Choose Filesystem}" tabindex="-1"><span class="commandSprite core-sprite-openarrow"></span></button>
+										</li>
+									</ul>
+								</div>
+							</span>
+							<div id="pageSidebar" class="dropdownTrigger toolbarTarget sidebar selectionModelContainer">
+								<div role="tree" aria-label="${Navigator}" aria-activedescendant="pageSidebarfile.definitions" tabindex="-1" style="outline: none;">
+									<table role="presentation" id="pageSidebarinnerTree" class="miniNavTreeTable">
+										<tbody id="pageSidebarinnerTreetbody">
+											<tr id="pageSidebarfile.definitions" class="navRow treeTableRow selectableNavRow treeIterationCursorRow checkedRow" role="treeitem">
+												<!--CSS class added to resolve conflict with settings.css-->
+												<td role="presentation" class="navColumn preview_td" style="padding-left: 0px;"><span id="pageSidebarfile.definitionsMainCol" role="presentation" class="mainNavColumn"><span id="pageSidebarfile.definitions__expand" class="modelDecorationSprite core-sprite-openarrow"></span><a class="navlinkonpage commonNavFolder treeIterationCursor" href="#" role="link" tabindex="-1" style="outline: none;">.definitions</a></span></td>
+											</tr>
+											<tr id="pageSidebarfile.definitionscompression.json" class="navRow treeTableRow selectableNavRow" role="treeitem">
+												<!--CSS class added to resolve conflict with settings.css-->
+												<td role="presentation" class="navColumn preview_td" style="padding-left: 16px;"><span id="pageSidebarfile.definitionscompression.jsonMainCol" role="presentation" class="mainNavColumn"><a class="navlink targetSelector" id="pageSidebarfile.definitionscompression.jsonNameLink" role="link" tabindex="-1" href="#" style="outline: none;"><span class="file-sprite-javascript modelDecorationSprite thumbnail"></span>compression.json</a></span></td>
+											</tr>
+											<tr id="pageSidebarfile.definitionsnodegit.json" class="navRow treeTableRow selectableNavRow" role="treeitem">
+												<!--CSS class added to resolve conflict with settings.css-->
+												<td role="presentation" class="navColumn preview_td" style="padding-left: 16px;"><span id="pageSidebarfile.definitionsnodegit.jsonMainCol" role="presentation" class="mainNavColumn"><a class="navlink targetSelector" id="pageSidebarfile.definitionsnodegit.jsonNameLink" role="link" tabindex="-1" href="#" style="outline: none;"><span class="file-sprite-javascript modelDecorationSprite thumbnail"></span>nodegit.json</a></span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="split splitLayout" style="left: 497px; position: absolute; right: auto; visibility: visible;">
+						<div class="splitThumb splitThumbLeftLayout"></div>
+					</div>
+					<div class="mainpane mainPanelLayout hasSplit" style="position: absolute; top: auto; bottom: auto; height: 100%; width: auto; right: 0px; left: 500px; display: block;">
+						<div class="fixedToolbarHolder">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

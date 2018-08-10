@@ -1,0 +1,354 @@
+@import "../../../../css/layout.css";
+
+@import "../../../../css/ide.css";
+
+@import "../../../../css/sections.css";
+
+@import "../../../../css/images.css";
+
+@import "../../../../css/theme.css";
+
+@import "../../../../css/progress.css";
+
+@import "../../../../css/wizard.css";
+
+html, body {
+	min-width: 350px;
+	overflow: hidden;
+}
+
+.dialogFrame {
+	background-color: #fdfdfd;
+}
+
+#messageArea {
+	display: table-cell;
+	width: calc(100% - 16px);
+}
+
+#messageRow {
+	background: none repeat scroll 0 0 #FFFFFF;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.098), 0 1px 0 0
+		rgba(0, 0, 0, 0.098);
+	height: 25px;
+	padding: 3px 5px 2px 9px;
+	display: table;
+	width: calc(100% - 15px);
+}
+
+#messageButton {
+	right: -7px;
+	margin-top: 1px;
+	position: absolute;
+	top: 0;
+}
+
+.Spaces {
+	width: 100%;
+}
+
+select {
+	height: 24px;
+	border: 1px solid #bbb;
+}
+
+.selectCell input {
+	height: 24px;
+	width:  100%;
+	margin-left: 0;
+}
+
+.selectCell>input, .selectCell>select, .selectCell>.comboTextInputWrapper {
+	float:right;
+	color: #333;
+}
+.selectCell>select {
+	width: 100%;
+	min-width: 270px;
+	max-width: 270px;
+}
+/*hacko: push simple text span over to align with inputs and selects*/
+.selectCell>span {
+	padding-left: 9px;
+}
+.selectCell .core-sprite-openarrow {
+	color: inherit;
+	font-size: 14px !important;
+}
+
+.modifiedCell {
+	background-color: #FFF6C5;
+}
+
+.comboTextInputWrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	width: calc(100% - 2px); /* -2 for the border */
+	border: 1px solid #bbb;
+}
+
+.comboTextInputWrapperFocussed {
+	outline-color: -webkit-focus-ring-color;
+	outline-style: auto;
+	outline-offset: -2px;
+	margin: 0;
+	outline-width: 5px;
+}
+
+.comboTextInputField {
+	width: calc(100% - 18px);
+	text-align: left;
+	margin-right: 0;
+	outline: none; /* needed to avoid double focus ring */
+	border: 0px !important;
+}
+
+.recentEntryButton {
+	margin: 0;
+	margin-top: -1px;
+	padding: 0;
+	border: none;
+	height: 16px;
+	background: none repeat scroll 0 0 #fff;
+	width: 16px;
+	outline: none; /* needed to avoid double focus ring */
+}
+
+.formTable {
+	/*font-family: Arial, sans-serif;*/
+	font-size: 14px;
+	width: 100%;
+}
+
+.formTable input, .formTable select {
+	font-size: 14px;
+}
+
+.selectCell {
+	padding-left: 32px;
+	padding-top: 4px;
+	text-align: left;
+	height: 24px; /*since min-height has no effect on <td>*/
+}
+
+.listCell select {
+	height: inherit;
+	width: 100%;
+}
+
+#servicesAddRemoveButtonsCol {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.messageContainer {
+	display: none;
+	padding-top: 2px;
+	position: absolute;
+	text-align: center;
+	box-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+	background-color: #e6f0e1;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	margin-left: 5%;
+	margin-right: auto;
+	width: 90%;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	padding-top: 5px;
+	z-index: 1000;
+}
+
+.messageContainer.showing {
+	display: block;
+	transition: top 0.7s ease 0s;
+}
+
+.retryFields {
+	margin-top: 5px;
+	text-align: right;
+}
+
+.retryFields label {
+	margin-left: 5px;
+}
+
+.errorMessage input {
+	border-color: #eddadd !important;
+}
+
+.errorMessage button {
+	color: #b82b28 !important;
+}
+
+.errorMessage button:hover, .errorMessage button:focus {
+	color: #701a19 !important;
+}
+
+.messageContainer.errorMessage {
+	background-color: #eddadd !important;
+	border: 1px solid #b82b28 !important;
+}
+
+.errorMessage, .errorMessage a {
+	color: #b82b28 !important;
+}
+
+.messageLabel a {
+	color: #b82b28;
+	text-decoration: underline;
+}
+
+.messageLabel button {
+	border: none;
+	border-radius: 5px;
+	background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+	color: #b82b28;
+	font-family: Arial, Helvetica, Myriad, Tahoma, clean, sans-serif,
+		Lucida Sans Unicode, Lucida Grande, Verdana;
+	font-size: 9pt;
+	cursor: pointer;
+}
+
+.messageLabel button:hover, .messageLabel button:focus {
+	color: #701a19;
+}
+
+.messageLabel {
+	color: #3a7a3a;
+	float: left;
+	max-height: 1000px;
+	overflow: hidden;
+	padding-left: 5px;
+	text-align: center;
+}
+
+.dialogTitle .closeDialog {
+	margin: 0;
+	cursor: pointer;
+}
+
+#memoryInput {
+	margin-right: 5px;
+	width: 235px;
+}
+
+#memoryUnit {
+	width: 50px;
+}
+
+
+input[type='number'] {
+	-moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button
+	{
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+.rowSeparator {
+	height: 20px;
+}
+
+.rowSeparator td {
+	padding: 15px 0 12px 0;
+}
+
+.wizardButtonRow {
+	-ms-user-select: none;
+	-moz-user-select: -moz-none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.wiz-hr {
+	display: block;
+	text-align: center;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.wiz-hr > span {
+	position: relative;
+	display: inline-block;
+}
+.wiz-hr > span:before,
+.wiz-hr > span:after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	width: 1000px;
+	height: 1px;
+	background: black;
+}
+.wiz-hr > span:before {
+	right: 100%;
+	margin-right: 10px;
+}
+.wiz-hr > span:after {
+	left: 100%;
+	margin-left: 10px;
+}
+
+.manifestOverride {
+	text-align: center;
+	font-size: 9pt;
+	margin-top: 10px;
+	width: calc(100% - 24px);
+}
+td#host::before,
+td#manifest::before{
+	position: absolute;
+	left: 36%;
+	margin-top: 5px;
+	content: "";
+	height: 16px;
+	width: 16px;
+}
+
+td#host::before{
+	margin-top: 5px;
+}
+
+.error::before{
+	background: url(../../../../images/error.png) scroll no-repeat;
+}
+
+.wrongPath::before{
+	background: url(../../../../images/warning.gif) scroll no-repeat; 
+}
+
+.correctPath::before{
+	background: url(../../../../images/success.png) scroll no-repeat;
+}
+
+.errorBorder{
+	border: red 2px solid;
+}
+.wrongPath input{
+	border: #FFA60C 2px solid;
+}
+.correctPath input{
+	border: #609B60 2px solid;
+}
+
+.errorBorder,
+.wrongPath input,
+.correctPath input{
+	border-radius: 2px;
+}
+
+span.tooltipContainer{
+	left: 145px !important;
+}
+
+input::-webkit-contacts-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+}
+

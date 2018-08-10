@@ -1,0 +1,26 @@
+/.project
+/*/*/bin/
+/target/
+/*/*/target/
+
+# JSDoc
+/doc/org.eclipse.orion.doc.isv/jsdoc/files.html
+/doc/org.eclipse.orion.doc.isv/jsdoc/index.html
+/doc/org.eclipse.orion.doc.isv/jsdoc/symbols/
+
+# Client build output
+built-js
+optimized
+staging
+
+# Node/npm
+*.log
+node_modules/
+
+# Mac Development
+.DS_Store
+
+/modules/orionode.debug.server/adapters
+
+# VS Code dev
+.vscode

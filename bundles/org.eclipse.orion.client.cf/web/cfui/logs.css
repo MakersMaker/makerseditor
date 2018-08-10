@@ -1,0 +1,95 @@
+@import "../css/layout.css";
+@import "../css/ide.css";
+@import "../css/sections.css";
+@import "../css/images.css";
+@import "../orion/editor/rulers.css";
+@import "../css/theme.css";
+
+#LogsNavigationTitle {
+    -moz-user-select: none;
+    font-weight: bold;
+    margin-left: 4px;
+    margin-top: 8px;
+    max-width: calc(100% - 6px - 4px - 24px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    position: absolute;
+}
+
+.textviewScroll {
+    padding: 4px 2px 4px 2px;
+}
+
+.textviewRightRuler {
+    display: none !important;
+}
+
+.toolbarTarget {
+    bottom: 0;
+}
+
+.launchConfsLabel {
+    color: #fff;
+    background-color: #3b4b54;
+    padding: 7px;
+    margin-right: 1px;
+}
+
+.dropdownTriggerButtonLabel {
+    display: inline;
+    line-height: normal;
+}
+
+.commandButton {
+    color: #fff;
+    background-color: #3b4b54;
+    padding: 7px;
+    border: none;
+    border-radius: 0;
+    opacity: 0.9;
+}
+
+.orionButton.commandButton:hover {
+    background-color: #3b4b54;
+    border: none;
+    outline: none;
+    opacity: 1;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.2);
+    transition: all 0.1s;
+}
+
+.dropdownArrowDown {
+    color: #e6e6e6;
+}
+
+#scrollLockWrapper {
+    margin-right: 5px;
+}
+
+.scrollLockLabel {
+    color: #fff;
+    margin-left: 4px;
+    font-size: 8pt;
+    padding-right: 4px;
+}
+
+.orionSwitch {
+    border: none;
+    border-radius: 10px;
+    height: 16px;
+    width: 36px;
+}
+
+.orionSwitchSwitch {
+    background: whitesmoke;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.2);
+    margin: 1px;
+    right: 50%;
+}
+
+#clearLogsWrapper {
+    margin-right: 10px;
+}

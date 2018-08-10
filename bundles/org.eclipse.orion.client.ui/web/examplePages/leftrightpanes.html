@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2017." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="icon" href="../images/edit.png" type="image/png">
+		<title>Left and Right Pane Page</title>
+		<link rel="stylesheet" type="text/css" href="leftrightpanes.css" />
+    	<script type="text/javascript" src="../requirejs/require.js"></script>
+		<script type="text/javascript">
+		/*eslint-env browser, amd*/
+		require({
+			  baseUrl: '..',
+			  packages: [ ],
+			  paths: {
+				  text: 'requirejs/text',
+				  i18n: 'requirejs/i18n',
+				  domReady: 'requirejs/domReady'	    
+			  }
+			});
+		
+		require(["examplePages/leftrightpanes"]);
+		</script>
+	</head>
+	
+	<body id="orion-leftrightpage" class="orionPage">
+		<nav id="sideMenu" class="sideMenu"></nav>
+		<div id="pageContent" class="content-fixedHeight">
+			<div id="sideMenuToggle" class="sideMenuToggle"></div>
+			<section id="pageToolbar" class="mainToolbar toolComposite toolbarLayout"></section>
+			<div id="innerPanels" style="position:absolute;width:100%;top:36px;bottom:0;">
+				<nav id="auxpane" class="auxpane sidePanelLayout hasSplit">
+					<div class="fixedToolbarHolder">
+						<div id="sidebarToolbar" class="sidebarToolbar mainToolbar toolComposite toolbarLayout"></div>
+						<div id="sidebar" class="dropdownTrigger toolbarTarget"></div>
+					</div>
+				</nav>
+				<div class="split splitLayout" style="left: 25%;"></div>
+				<main id="rightPane" class="mainpane mainPanelLayout hasSplit">
+					<div class="fixedToolbarHolder">
+						<div id="target" class="workingTarget"></div>
+					</div>
+				</main>
+			</div>
+		</div>
+		<div class="footer-fixed-bottom footer" id="footer">
+		</div>
+	</body>
+</html>

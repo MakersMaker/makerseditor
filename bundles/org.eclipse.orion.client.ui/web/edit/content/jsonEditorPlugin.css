@@ -1,0 +1,77 @@
+@import "./../../css/layout.css";
+@import "./../../css/pages.css";
+@import "./../../css/controls.css";
+@import "./../../css/lightPage.css";
+@import "./../../css/theme.css";
+.typeimage {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	vertical-align: middle;
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+}
+.stringtype {
+	background-image: url("images/string.png");
+}
+.booleantype {
+	background-image: url("images/boolean.png");
+}
+.numbertype {
+	background-image: url("images/number.png");
+}
+.tablelabel {
+	padding-left: 4px;
+}
+.secondaryColumn {
+	padding-top: 0;
+	vertical-align: middle;
+}
+.userEditBoxPrompt {
+	margin: 0;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	vertical-align: middle;
+	width: 80%;
+}
+.emptyJSON {
+    color: red;
+}
+body {
+	padding: 3px;
+	background-color: white;
+}
+td {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+.jsonEditor-sprite-openarrow:before{
+    content:'\25BC';
+}
+.jsonEditor-sprite-closedarrow:before{
+    content:'\25B6';
+}
+.jsonEditor-sprite-progress:before{
+	content:'...';
+}
+.jsonEditor-sprite-openarrow,
+.jsonEditor-sprite-closedarrow,
+.jsonEditor-sprite-progress
+{
+	color: inherit;
+    font-size: 9px;
+    line-height: normal;
+    vertical-align: middle;
+    padding: 0;
+    background: none;
+    border: none;
+    -webkit-font-smoothing: antialiased;
+}
+.jsonEditor-sprite-openarrow
+{
+	margin: 0;
+    font-size: 11px;
+    padding-right: 1px;
+}

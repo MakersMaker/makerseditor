@@ -1,0 +1,27 @@
+@import "../css/test.css";
+
+/* This is a CSS comment */
+#identity {
+    background: white;
+    color: #222;
+    border: solid 1px #999;
+    border-radius: 2px;
+    font-size: 0.9em;
+    padding: 1px;
+    display: inline;
+    display: inline;
+}
+
+.className {
+	background: papayawhip;
+	error property: none;
+}
+
+.className * {
+	border: 1px solid black;
+}
+
+.className > .right {
+	text-a:right;
+	text-align: right;
+}

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2014, 2017." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Image Viewer</title>
+		<link rel="stylesheet" type="text/css" href="imageViewerPlugin.css" />
+		<script src="../../orion/requireErrorHandler.js"></script>
+		<script src="../../requirejs/require.js"></script>
+		<script>
+			/*eslint-env browser, amd*/	
+			require(["../../orion/require-config.js"], function(config){
+				require.config({baseUrl: "../.."});
+				require(["edit/content/imageViewerPlugin"], null, self.errback);
+			}, self.errback);
+		</script>
+    </head>
+	<body>
+		<div class = "imageContainer" id="imageContainer">
+			<div class="imageTitle" id="imageTitle">
+			Loading...
+			</div>
+			<div class= "imageContent" id="imageContent">
+			</div>
+		</div>
+	</body>
+</html>

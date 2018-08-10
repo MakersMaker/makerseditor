@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2017." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="icon" href="../../images/edit.png" type="image/png">
+		<title>Embedded Editor Demo</title>
+		<link rel="stylesheet" type="text/css" href="built-codeEdit.css" />
+		<link rel="stylesheet" type="text/css" href="editorTheme.css" />
+		<script src="../../requirejs/require.js"></script>
+		<script type="text/javascript">
+			/*eslint-env browser, amd*/
+			require({
+				baseUrl: '../..',
+				paths: {
+					text: 'requirejs/text',
+					i18n: 'requirejs/i18n',
+					domReady: 'requirejs/domReady',
+					'orion/searchAndReplace/textSearcher': '/embeddedEditor/builder/buildFrom/textSearcher'
+				}
+			});
+			require(["embeddedEditor/demo/demoCodeEdit"]);
+		</script>
+    </head>
+
+	<body id="orion-browser" spellcheck="false" class="orionPage">
+		<div class="embeddedEditorDemoTextParent">
+			<p>This is a demo for the <b>stand alone</b> embedded editor widget. This demo consumes the <b>non-built version</b> of the widget.</p> 
+			<p>Keep editing in this demo and try:</p>
+			<ol>
+				<li>Content assist. E.g., put cursor after "foo." at the last line and press CTRL+space.</li>
+				<li>Problem validations. E.g., modify something and you will see new validation markers coming up, if any.</li>
+				<li>Hover service. Hover on any error markers or inside the editor.</li>
+				<li>Syntax highlighting.</li>
+				<li>Quick fix. Hover on a problem inside the editor, not on the ruler, e.g., (char, from) in this demo. Click on the quick fix and see.</li>
+				<li>Find declaration. Select a variable and press F3.</li>
+				<li>New tooling features coming while Orion is being improved...</li>
+			</ol>
+		</div>
+		<!--*<form> -->
+		<div class="embeddedEditorDemoTextParent">
+			<span id = "progressMessageDiv">Loading language tooling plugins...</span>
+			<input id = "newEditor" type="button" value="New JS editor">
+			<input id = "setText" type="button" value="Set Text">
+		</div>
+		<div class="embeddedEditorTool" id="__toolbar__">
+			<span id = "progressMessageDiv"></span>
+		</div>
+		<div class="embeddedEditorParentOuter" id="embeddedEditor">
+		</div>
+		<div class="embeddedEditorParentOuter" id="embeddedEditor1">
+		</div>
+		<div class="embeddedEditorParentOuter" id="embeddedEditor2">
+		</div>
+		<!-- </form> -->
+	</body>
+</html>

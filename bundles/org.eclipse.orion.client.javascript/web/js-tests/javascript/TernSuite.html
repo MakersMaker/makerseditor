@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="copyright" content="Copyright (c) IBM Corporation and others 2017." >
+	<meta http-equiv="Content-Language" content="en-us">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>JavaScript Tools Mocha Tests</title>
+  <link rel="stylesheet" href="../../mocha/mocha.css" />
+  <script src="../../requirejs/require.js"></script>
+  <script>
+	/*eslint-env amd, mocha*/
+	/* eslint-disable missing-nls */
+	require({
+		baseUrl: '../../',
+		paths: {
+			text: 'requirejs/text',
+			json: "requirejs/json", 
+			i18n: 'requirejs/i18n',
+			domReady: 'requirejs/domReady'
+		}
+	});
+	require(['mocha/sauce'], function(mocha) {
+		mocha.setup('bdd');
+		require([
+				'js-tests/javascript/ternAssistIndexTests',
+				'js-tests/javascript/ternAssistModuleTests',
+				'js-tests/javascript/ternAssistTests',
+				'js-tests/javascript/ternCommandsTests',
+				'js-tests/javascript/ternProjectFileTests',
+				'js-tests/javascript/ternProjectValidatorTests',
+				'js-tests/javascript/ternProjectHoverTests',
+				// 'js-tests/javascript/ternProjectManagerTestsx' // Not working.
+				], function(){
+					before("reset timeout", function(done) {
+						this.timeout(30000);
+						done();
+					});
+					mocha.run();
+		});
+	});
+  </script>
+</head>
+<body>
+	<div id="mocha">
+		<h1>Tern Tooling Tests</h1>
+	</div>
+</body>
+</html>

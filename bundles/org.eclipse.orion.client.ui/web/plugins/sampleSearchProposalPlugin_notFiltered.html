@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="copyright" content="Copyright (c) IBM Corporation and others 2011, 2017." >
+	<meta http-equiv="Content-Language" content="en-us">
+	<title>Search Proposal Not Filtered</title>
+	<script type="text/javascript" src="../orion/plugin.js"></script>
+	<script>
+	/*eslint-env browser, amd*/
+	/*global orion*/
+	  window.onload = function() {
+	  	  var bindData = [{category: "String operations", datalist:["indexOf", "length", "toUpperCase", "toLowerCase", "bold", "replace", "length", "substring", "slice"]},
+	  	  				  {category: "Orion classes", datalist:["globalCommands", "searchExplorer", "fileExplorer", "navigator", "compare editor", "site editor"]},
+	  	  				  {category: "Countries", datalist:["USA", "Canada", "Poland", "China", "Japan", "Korea", "Bazil"]}
+	  	  ];
+	  
+	      var provider = new orion.PluginProvider();
+	      var serviceImpl = {
+	              run: function(keyWords) {
+	                  return bindData;
+	              }
+	          };
+	      var serviceProperties = { 
+	              "filterForMe": true
+	          };
+	      provider.registerService("orion.search.proposal", serviceImpl, serviceProperties);
+	      provider.connect();
+	  };
+	</script>
+</head>
+<body>
+</body>
+</html>

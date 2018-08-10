@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="copyright" content="Copyright (c) IBM Corporation and others 2012, 2017." >
+	<meta http-equiv="Content-Language" content="en-us">
+	<title>Core Tests</title>
+	<link rel="stylesheet" href="../../mocha/mocha.css" />
+	<script src="../../requirejs/require.js"></script>
+	<script>
+		/*eslint-env browser,amd*/
+		require({
+		baseUrl: "../../",
+		paths: {
+			text: "requirejs/text",
+			i18n: "requirejs/i18n",
+		}
+	});
+	require(["mocha/sauce"], function(mocha) {
+		mocha.setup("bdd");
+		require([
+			"js-tests/core/base64/base64Tests",
+			"js-tests/core/config/configTests",
+			"js-tests/core/deferred/deferredTests",
+			"js-tests/core/metatype/metatypeTests",
+			"js-tests/core/pluginregistry/pluginregistryTests",
+			"js-tests/core/preferences/preferencesTests",
+			"js-tests/core/serviceregistry/serviceregistryTests",
+			"js-tests/core/serviceTracker/serviceTrackerTests",
+			"js-tests/core/URITemplate/URITemplateTests",
+			"js-tests/core/URL/URLTests",
+			"js-tests/core/xhr/xhrTests",
+		], function(){
+			mocha.run();
+		});
+	});
+	</script>
+</head>
+<body>
+	<div id="mocha">
+		<h1>Core Tests</h1>
+	</div>
+</body>
+//</html>

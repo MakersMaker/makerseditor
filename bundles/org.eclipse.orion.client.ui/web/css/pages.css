@@ -1,0 +1,60 @@
+/*
+ * Provide document level styles. All the Orion specific styles should live in controls.css
+*/
+html {
+  cursor: default;
+  height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 
+		'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+	font-size: 9pt;
+	min-width:700px;
+	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+} 
+
+h2 {
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #6d6d6d;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+/** remove unwanted borders on img in IE **/
+img {
+	border: 0;
+}
+
+/**
+ * Remove unwanted button padding in Firefox
+ */ 
+button::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+input, div.parameterInput[contenteditable="true"] {
+	-moz-user-select: text;
+	text-indent: 0;
+	text-shadow: none;
+	border: 1px solid #bbb;
+	color: #333;
+	font-size: 9pt;
+	padding: 2px;
+	margin-left: 5px;
+}
+
+textarea  {
+	border: 1px solid #bbb;
+}
+
+html[dir="rtl"] input{ /* ACGC */
+	margin-right: 5px;
+	margin-left: auto;
+}
+

@@ -1,0 +1,61 @@
+<div>
+	<style>
+	#importThemeContainer {
+		width: 300px;
+	}
+
+	#fileInputLabel {
+		margin-bottom: 12px;
+	}
+
+	.msg {
+		color: #333;
+		margin-bottom: 12px;
+	}
+
+	.drop-zone {
+		border: 2px dashed #bbb;
+		border-radius: 5px;
+		color: #bbb;
+		font-family: Arial,Helvetica,Myriad,Tahoma,clean,sans-serif, Lucida Sans Unicode,Lucida Grande,Verdana;
+		font-size: 24px;
+		font-weight: bold;
+		margin-bottom: 12px;
+		padding: 25px;
+		text-align: center;
+		transition: background-color 250ms ease-out;
+	}
+
+	.drop-zone.over {
+		background-color: #dadada;
+		transition: background-color 250ms ease-in;
+	}
+
+	.importerror {
+		background-color: #f2dede;
+		border: 1px solid #ebccd1;
+		color: #a94442;
+		padding: 12px;
+	}
+
+	#themeText {
+		box-sizing: border-box;
+  		width: 100%;
+	}
+
+	input[type="file"] + label {
+		cursor: pointer;
+	}
+	
+	/* when file input gets focus, label sibling matches focus style for non-primary command buttons in lightPage.css */
+	.lightPage input[type="file"]:focus + label {
+		color: black;
+		background-color: rgba(60, 113, 179, 0.25);
+		box-shadow: 0 1px 2px 0 rgb(60, 113, 179);
+	}
+
+	</style>
+	<div id="importThemeContainer">
+		<div class="msg" id="importThemeMessage">${ImportThemeDialogMessage}</div>
+	</div>
+</div>

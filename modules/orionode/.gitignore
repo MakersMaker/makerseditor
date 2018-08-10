@@ -1,0 +1,25 @@
+# Want to track this .gitignore file in Git, so override the top-level ignore
+!.gitignore
+.project
+
+# Ignore npm artifacts
+node_modules/
+npm-debug.log
+server/
+
+# Ignore any Maven artifacts that creep into the repo
+target/
+
+# Ignore inlined orion client code copied by Grunt build
+lib/orion.client/
+
+# ignore electron artifacts
+dist/
+
+# Ignore per-user Orionode data
+.workspace*/
+.test_workspace
+.test_metadata
+.nyc_output/
+coverage/
+orion_client_coverage/

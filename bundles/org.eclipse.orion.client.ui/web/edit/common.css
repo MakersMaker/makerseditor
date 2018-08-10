@@ -1,0 +1,106 @@
+@import "../css/layout.css";
+
+@import "../css/ide.css";
+
+@import "../css/images.css";
+
+@import "../css/sections.css"; /* for outliner */
+
+@import "../orion/editor/editor.css";
+
+@import "../orion/webui/Slideout.css";
+
+@import "../orion/search/InlineSearchPane.css";
+
+@import "../orion/problems/problemsView.css";
+
+@import "../css/theme.css";
+
+.outlinerWrapper {
+	height: 100%;
+}
+
+.outlineNodeWrapper {
+	height: calc(100% - 22px);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+.outlineExplorer {
+	overflow-y: hidden;
+	white-space:nowrap;
+	width: 100%
+}
+
+.outlineFilterLabel {
+	margin: 3px 6px;
+}
+
+.outlineFilter {
+	border: 1px solid lightgrey;
+	margin: 3px 6px;
+	width: 95%; /* for older browsers */
+	width: calc(100% - 38px);
+}
+
+.outlineRowMatchesFilter {
+	font-weight:bold;
+}
+
+.outlineRowHidden {
+	display: none;
+}
+
+.outlineLeafIndent {
+	display: inline-block;
+	width: 16px; /*16px standard indent*/
+}
+
+.outlineTimeoutSpan {
+	color: red;
+	display: inline-block;
+	margin: 10px 6px;
+	position: relative;
+}
+
+.findOptionsDiv {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+}
+
+.replaceInfo {
+	margin-left: -14px;
+	margin-right: 7px;
+	margin-bottom: -3px;
+	cursor: pointer;
+}
+
+.extraActions:not(:empty) {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-right: 10px;
+	margin-left: 10px;
+	padding-left: 10px;
+	border-left: 1px solid #676f73;
+}
+
+.mainpane {
+	padding-right:0;
+}
+
+.workingTarget {
+	background: #253B46;
+}
+
+.workingTarget .sectionWrapper {
+	background-color: white !important;
+}
+
+.workingTarget .sectionTable {
+	background-color: white;
+}
+
+.workingTarget .orionMarkdown {
+	background: white;
+}

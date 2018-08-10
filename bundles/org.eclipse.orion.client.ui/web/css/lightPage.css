@@ -1,0 +1,314 @@
+/* Standard focus handling */
+:-moz-focusring {
+   outline: none;
+   box-shadow: 0 0 4px #5b9dd9;
+}
+
+.textviewContent:focus, .sidebar:focus {
+	outline: none;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* Light Theme Spec */
+
+.lightPage .dropdownTrigger:not(.dropdownDefaultButton),
+.lightPage .mainToolbar .commandImage.dropdownTrigger,
+.lightPage .dropdownButtonWithIcon,
+.lightPage .sideMenuItem,
+.lightPage .editorViewerHeader,
+.lightPage .filesystemName,
+.lightPage .mainToolbar {
+	color: rgb(21, 41, 53) !important;
+}
+
+.lightPage .mainToolbar,
+.lightPage .sectionTable,
+.lightPage .sideMenu,
+.lightPage .workingTarget {
+	background-color: white;
+}
+
+.lightPage .mainToolbar .commandButton.orionButton.dropdownTrigger .dropdownTriggerButtonLabel,
+.lightPage .mainToolbar .commandButton.orionButton.dropdownTrigger.launchConfigurationsButton .dropdownArrowDown {
+	color: white;
+}
+
+.lightPage .statusLight {
+	background: lightgray;
+}
+.lightPage .statusLight.statusLightGreen {
+	background: #13dd6d;
+}
+.lightPage .statusLight.statusLightRed {
+	background: #C1272D;
+}
+.lightPage .statusLight.statusLightAmber {
+	background: #FFE141;
+}
+.lightPage .statusLight.statusLightProgress {
+	background: transparent;
+	border-color: transparent lightgray lightgray lightgray;
+}
+
+.lightPage .split {
+	background: #c4c5c8;
+}
+
+.lightPage .split:focus {
+	outline: none;
+	background: rgb(60, 113, 179);
+}
+
+.lightPage .splitThumb {
+	background: #c4c5c8
+}
+
+.lightPage .statusContainer {
+	color: black;
+	background: #f5f7fa;
+}
+
+.lightPage .launchConfigurationMenuItem.dropdownMenuItemActive {
+	background: #f5f7fa;
+}
+
+.lightPage .editorViewerHeader,
+.lightPage .titleActionContainer,
+.lightPage .sidebarWrapper {
+	color: black;
+	background: #f5f7fa !important;
+}
+
+.lightPage .content-fixedHeight,
+.lightPage .auxpane,
+.lightPage .mainpane {
+	background: #c4c5c8 !important;
+}
+
+.lightPage .splash,
+.lightPage .splashLoader {
+	background: #f5f7fa !important;
+	box-shadow: none;
+}
+
+.lightPage .gitStatusSection,
+.lightPage .gitCommitMessageSection,
+.lightPage .treeIterationCursorRow_Dotted,
+.lightPage .treeIterationCursorRow {
+	background-color: rgba(60, 113, 179, 0.25);
+}
+
+.lightPage label.parameterInput,
+.lightPage .tooltip h2,
+.lightPage .tooltip .operationError,
+.lightPage .checkedRow .gitStatusTitle,
+.lightPage .checkedRow .gitCommitMore,
+.lightPage .checkedRow .gitStatusIcon {
+	color: white !important;
+}
+
+.lightPage .liveUpdateLabel,
+.lightPage .splashAbout,
+.lightPage .splashVerbal,
+.lightPage .gitCommitMore,
+.lightPage .gitStatusTitle,
+.lightPage .gitStatusIcon,
+.lightPage .sideMenuItem > .submenu-trigger:hover {
+	color: rgb(60, 113, 179) !important;
+}
+
+.lightPage .sideMenuItemActive:hover {
+	color: white;
+	background: rgba(60, 113, 179, 0.25) !important;
+}
+
+.lightPage .splashDetailedMessage,
+.lightPage .splashMessage,
+.lightPage .status,
+.lightPage .projectNavColumn {
+	color: black;
+}
+
+.lightPage #configSection {
+	color: black !important;
+	background: white !important;
+}
+
+.lightPage .fixedToolbarHolder {
+	background: white;
+}
+
+.lightPage .gitCommitMessage .gitCommitMessageTopRow {
+	border: 1px solid rgb(60, 113, 179);
+}
+
+.lightPage .tooltip {
+	background-color: rgb(60, 113, 179);
+	border: 1px solid rgb(60, 113, 179);
+ 	color: white;
+}
+
+.lightPage .tooltipTailFromright:before,
+.lightPage .tooltipTailFromright:after {
+	border-right-color: rgb(60, 113, 179);
+}
+
+.lightPage .tooltipTailFromleft:before,
+.lightPage .tooltipTailFromleft:after {
+	border-left-color: rgb(60, 113, 179);
+}
+
+.lightPage .tooltipTailFrombelow:before,
+.lightPage .tooltipTailFrombelow:after {
+	border-bottom-color: rgb(60, 113, 179);
+}
+
+.lightPage .tooltipTailFromabove:before,
+.lightPage .tooltipTailFromabove:after {
+	border-top-color: rgb(60, 113, 179);
+}
+
+.lightPage .searchResultsWrapperDiv .selectableNavRow:hover,
+.lightPage .dropdownMenu .dropdownMenuItemSelected {
+	border-left-color: rgb(60, 113, 179);
+	background: rgba(60, 113, 179, 0.25);
+}
+
+.lightPage .dialogTitle,
+.lightPage .orionSwitchLabel,
+.lightPage .launchConfsDropdown .dropdownDefaultButton,
+.lightPage .launchConfsLabel,
+.lightPage .tooltip .navlinkonpage,
+.lightPage .mainToolbar .sectionWrapper,
+.lightPage .mainToolbar .gitSectionLabel,
+.lightPage .launchConfigurationsWrapper > .launchConfigurationsButton.dropdownTrigger,
+.lightPage .slideParameters,
+.lightPage .outlineExplorer .treeIterationCursorRow_Dotted,
+.lightPage .navbar-item-selected,
+.lightPage .sideMenuItemActive,
+.lightPage .tooltip,
+.lightPage .checkedRow {
+	background-color: rgb(60, 113, 179) !important;
+ 	color: white !important;
+}
+
+.lightPage .primaryButton {  /* from git.css */
+	background-color: rgb(60, 113, 179) !important;
+	color: white !important;
+	border: 1px solid rgb(60, 113, 179) !important;
+	border-radius: 0 !important;
+}
+
+.lightPage .primaryButton:not([disabled]):hover, .primaryButton:focus {
+	box-shadow: 0 1px 2px 0 #5b9dd9;
+}
+
+.lightPage .checkedRow .commandButton {
+	color: white;
+	border-color: white;
+}
+
+.lightPage .commandButton.orionButton.dropdownTrigger:hover {
+	border-color: #ccc;
+}
+
+.lightPage .commandButton {
+	color: rgb(60, 113, 179);
+	border: 1px solid rgb(60, 113, 179);
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.lightPage .commandButton.disabled {
+	color: #cdcdcd;
+}
+
+.lightPage .textviewTooltip {
+	background-color: rgb(60, 113, 179);
+}
+
+.lightPage .textviewTooltip .commandButton { /* Styling quickfixes */
+	border-color: white;
+	border: 1px solid white;
+	background-color: inherit;
+	color: white;
+	margin-bottom: 2px;
+}
+
+.lightPage .commandButton:not(.primaryButton):not([disabled]):hover,
+.lightPage .commandButton:not(.primaryButton):focus {
+	color: black;
+	background-color: rgba(60, 113, 179, 0.25);
+	box-shadow: 0 1px 2px 0 rgb(60, 113, 179);
+}
+
+.lightPage .checkedRow .commandButton:not(.primaryButton):not([disabled]):hover,
+.lightPage .checkedRow .commandButton:not(.primaryButton):focus {
+	color: black;
+	background: rgba(255, 255, 255, 0.50);
+	box-shadow: 0 1px 2px 0 rgb(60, 113, 179);
+}
+
+.lightPage .launchConfigurationsButton .commandButton.orionButton.dropdownTrigger {
+	color: white !important;
+}
+
+.lightPage .mainToolbar .commandButton.orionButton.dropdownTrigger {
+	color: black !important;
+}
+
+.lightPage .core-sprite-error {
+	color: red;
+}
+
+.lightPage #log {
+	margin: 5px;
+	width: calc(100% - 17px);
+}
+
+.lightPage .splashLoadingImage {
+	display: inline-block;
+	background: none;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	border-radius: 50%;
+	border: 2px solid #00b299;
+	border-right-color: transparent;
+	-webkit-animation: rotateThis .5s infinite linear;
+	animation: rotateThis .5s infinite linear;
+	opacity: .4;
+}
+
+.lightPage .splashLoadingImage.initial {
+	height: 40px;
+	width: 40px;
+	border-width: 4px;
+}
+
+.lightPage .uploadNodeText{
+	color: black;
+}
+
+@-webkit-keyframes rotateThis {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(1turn);
+		-webkit-transform: rotate(1turn)
+	}
+}
+
+@keyframes rotateThis {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg)
+	}
+	to {
+		transform: rotate(1turn);
+		-webkit-transform: rotate(1turn)
+	}
+}

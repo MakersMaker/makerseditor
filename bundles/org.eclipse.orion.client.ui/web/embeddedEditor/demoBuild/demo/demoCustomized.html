@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+    <head>
+		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2014." >
+		<meta http-equiv="Content-Language" content="en-us">
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Pluggable Editor Demo</title>
+		<style type="text/css">
+			.demoTitle{
+				border: none;
+				vertical-align: middle;
+				overflow: hidden;
+				text-align: left;
+				margin-left: 15%;
+				margin-right: 15%;
+				padding-bottom: 5px;
+				position: relative;
+			}
+			.demoBody{
+				border: 1px solid;
+				vertical-align: middle;
+				border-color: blue;
+				overflow: hidden;
+				text-align: left;
+				margin-left: 15%;
+				margin-right: 15%;
+				margin-bottom: 15px;
+				padding-bottom: 5px;
+				position: relative;
+				height: 450px;
+			}
+		</style>
+	    <link rel="stylesheet" type="text/css" href="editorBuild/code_edit/built-codeEdit.css"/>
+	    <link rel="stylesheet" type="text/css" href="custom.css"/>
+		<script src="editorBuild/code_edit/built-codeEdit.js"></script>
+		<script>
+			/*globals orion */
+			var contents = 'var foo = "bar";\n' +
+								 "var bar = foo;\n" + 
+								 "/*\n" + 
+								 " * test demo\n" + 
+								 "*/\n" + 
+								 "function test(){\n" + 
+								 "	var foo1 = bar.lastIndexOf(char, from);\n" + 
+								 "}\n" + 
+								"//Keep editing in this demo and try the content assist, problem validations and hover service!\n" +
+								 "var foo2 = foo."; 
+			var contents1 = 
+								 '<div class="embeddedEditorParentOuter" id="embeddedEditor1">\n' + 
+								 "</div>\n" + 
+								 "<span>var foo2</span>"; 
+								 
+			var contents2 = '<server description="new server">\n' +
+							 '</server>';
+			var proposals = [
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal ",
+				"proposal "
+			];
+			var contentAssistProvider = {
+				computeProposals: function(buffer, offset, context) {
+					var result = [];
+					for(var i = 0; i < proposals.length; i++){
+						result.push(proposals[i] + i);
+					}
+					return result;
+				}
+			};
+			var hoverProvider = {
+				computeHoverInfo: function (editorContext, context) {
+					var pContent = "_This text will be italic_  \n\n__This text will be bold__  \nThis text is normal";
+					if(typeof context.offset === "number") {
+						return context.offset > 12 ? {
+							title: "This is the title",
+							content: pContent,
+							type: "markdown"} : null;
+					} else if(typeof context.proposal === "string") {
+						var index = parseInt(context.proposal.substring("proposal ".length - 1), 10);
+						return index > -1 ? {
+							title: "The tile is bold with customized css",
+							content: pContent,
+							type: "markdown"} : {};
+					}
+					return {};
+				}
+			};
+		
+			function execute(orionContext, params) {
+				window.alert("foo");
+			}
+			function computeOccurrences(orionContext, context) {
+				if(typeof context.selection) {
+					return context.selection.start > 5 ? [{start: context.selection.start + 5, end: context.selection.start + 9}] : [];
+				} 
+				return [];
+			}
+			
+			window.onload=function(){
+				var codeEdit = new orion.codeEdit(/*{ userPlugins:["editorCommandsPlugin.html"] }*/);
+				var cto = {
+					id: "text/myID",//use this MIME type ID to call create()
+					extension: ["myExt"],//file extension
+					name: 'My content type',
+					'extends': 'text/plain'//Your type has to extends 'text/plain'
+				};
+				codeEdit.serviceRegistry.registerService('orion.core.contenttype', {}, {contentTypes: [cto]});
+				
+				codeEdit.create({parent: "embeddedEditor", userPlugins:["editorCommandsPlugin.html"], contentType: "application/javascript", contents: contents}).then(function(editorViewer) {
+					document.getElementById("progressMessageDiv").textContent = "Plugins loaded!";
+					if (editorViewer.settings) {
+						editorViewer.settings.contentAssistAutoTrigger = true;
+						editorViewer.settings.showOccurrences = true;
+					}
+				});
+				
+				codeEdit.create({parent: "embeddedEditor1"}).then(function(editorViewer){
+					if (editorViewer.settings) {
+						editorViewer.settings.contentAssistAutoTrigger = true;
+						editorViewer.settings.showOccurrences = true;
+					}
+					editorViewer.serviceRegistry.registerService("orion.edit.contentassist",
+							contentAssistProvider,
+				    		{	name: "xmlContentAssist",
+				    			contentType: ["text/myID"],
+				    			charTriggers: "[.(]"
+				    		});
+					editorViewer.serviceRegistry.registerService("orion.edit.hover",
+						hoverProvider,
+			    		{	name: "myContentHover",
+			    			contentType: ["text/myID"]
+			    		});
+					var sr = editorViewer.serviceRegistry.registerService('orion.edit.command', {execute: execute}, {
+						name: 'my edit command',
+						id: 'myCommand.testing',
+						key: ['l', true, true],
+						contentType: ["text/myID"]
+					});
+					//sr.unregister();
+					editorViewer.serviceRegistry.registerService('orion.edit.occurrences',
+						{computeOccurrences: computeOccurrences}, {contentType: ["text/myID"]});	
+			    	editorViewer.setContents(contents2, "text/myID");
+				});
+			};
+		</script>
+    </head>
+	<body id="orion-browser" spellcheck="false" class="orionPage">
+		<div class="demoTitle">
+			<p>This is a demo for the <b>Orion Code Edit</b> widget. This demo consumes the <b>built version</b> of the widget.</p> 
+			<p>Keep editing in this demo and try:</p>
+			<ol>
+				<li>Content assist. E.g., put cursor after "foo." at the last line and press CTRL+space.</li>
+				<li>Problem validations. E.g., modify something and you will see new validation markers coming up, if any.</li>
+				<li>Hover service. Hover on any error markers or inside the editor.</li>
+				<li>Syntax highlighting.</li>
+				<li>Quick fix. Hover on a problem inside the editor, not on the ruler, e.g., (char, from) in this demo. Click on the quick fix and see.</li>
+				<li>Find declaration. Select a variable and press F3.</li>
+				<li>New tooling features coming while Orion is being improved...</li>
+			</ol>
+		</div>
+		<div class="demoTitle">
+			<span id = "progressMessageDiv" style="color: green">Loading language tooling plugins...</span>
+		</div>
+		<div class="demoBody" id="embeddedEditor">
+		</div>
+		<div class="demoBody" id="embeddedEditor1">
+		</div>
+	</body>
+</html>
