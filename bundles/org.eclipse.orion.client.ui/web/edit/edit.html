@@ -1,11 +1,14 @@
 <!doctype html>
 <html lang="en">
     <head>
-		<meta name="copyright" content="Copyright (c) IBM Corporation and others 2010, 2017." >
-		<meta http-equiv="Content-Language" content="en-us">
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="icon" href="../images/edit.png" type="image/png">
 		<title>Editor</title>
+		<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+		<script src="https://cdn.webrtc-experiment.com/CodecsHandler.js"></script>
+		<script src="https://cdn.webrtc-experiment.com/IceServersHandler.js"></script>
+		<script src="https://cdn.webrtc-experiment.com/meeting.js"></script>
 		<link rel="stylesheet" type="text/css" href="edit.css" />
 		<script src="../orion/requireErrorHandler.js"></script>
 		<script src="../requirejs/require.js"></script>
@@ -18,6 +21,16 @@
 				require(["orion/splash"], load, load);
 			}, self.errback);
 		</script>
+
+		<script>
+					/* makersmaker by Kimdonggeun  */
+		</script>
+		<!-- Makersmaker by Kimdonggeun
+		     Web RTC 선언 부분-->
+
+
+
+		
 	</head>
 
 	<body id="orion-editor" spellcheck="false" class="orionPage lightPage">
@@ -40,8 +53,37 @@
 						<div id="editor" class="workingTarget"></div>
 						<div id="replaceCompareTitleDiv" class="replaceCompareTitleDiv"></div>
 						<div id="replaceCompareDiv" class="replaceCompareDiv workingTarget"></div>
+						<div id="webRTCPanel" style=" right:0; width: 300px; height: 900px; z-index: 1; visibility: visible; position :fixed;">
+						        <section class="experiment">
+										<section>
+											<h2 style="border: 0; padding-left: .5em;">Wanna try yourself?</h2>
+											<input type="text" id="meeting-name">
+											<button id="setup-meeting">Setup New Meeting</button>
+										</section>
+										
+									<table style="width: 100%;" id="meetings-list"></table>
+										<table style="width: 100%;">
+											<tr>
+												<td style="width: auto!important;">
+													<h2 style="display: block; font-size: 1em; text-align: center;">You!</h2>
+													<div id="local-streams-container"></div>
+												</td>
+											</td>
+											<tr>
+												<td style="background: white;width: auto!important;">
+													<h2 style="display: block; font-size: 1em; text-align: center;">Remote Peers</h2>
+													<div id="remote-streams-container"></div>
+												</td>
+											</tr>
+										</table>
+						
+						
+						
+						</div>	
 					</div>
 				</main>
+
+				
 			</div>
 		</div>
 		<div class="footer-fixed-bottom footer" id="footer">
@@ -62,5 +104,83 @@
 				});
 			}
 		</script>
+
+<script>
+		
+			var meeting = new Meeting();
+					var meetingsList = document.getElementById('meetings-list');
+					var meetingRooms = {};
+					meeting.onmeeting = function (room) {
+						if (meetingRooms[room.roomid]) return;
+						meetingRooms[room.roomid] = room;
+						var tr = document.createElement('tr');
+						tr.innerHTML = '<td>' + room.roomid + '</td>' +
+							'<td><button class="join">Join</button></td>';
+						meetingsList.insertBefore(tr, meetingsList.firstChild);
+						// when someone clicks table-row; joining the relevant meeting room
+						tr.onclick = function () {
+							room = meetingRooms[room.roomid];
+							// manually joining a meeting room
+							if (room) meeting.meet(room);
+							meetingsList.style.display = 'none';
+						};
+					};
+					var remoteMediaStreams = document.getElementById('remote-streams-container');
+					var localMediaStream = document.getElementById('local-streams-container');
+					// on getting media stream
+					meeting.onaddstream = function (e) {
+						if (e.type == 'local') localMediaStream.appendChild(e.video);
+						if (e.type == 'remote') remoteMediaStreams.insertBefore(e.video, remoteMediaStreams.firstChild);
+					};
+					
+					// via: https://github.com/muaz-khan/WebRTC-Experiment/tree/master/websocket-over-nodejs
+					meeting.openSignalingChannel = function(onmessage) {
+						var channel = location.href.replace(/\/|:|#|%|\.|\[|\]/g, '');
+						// wss://websocket-over-nodejs.herokuapp.com:443/
+						var websocket = new WebSocket('wss://webrtcweb.com:9449/');
+						websocket.onopen = function () {
+							websocket.push(JSON.stringify({
+								open: true,
+								channel: channel
+							}));
+						};
+						websocket.push = websocket.send;
+						websocket.send = function (data) {
+							if(websocket.readyState != 1) {
+								return setTimeout(function() {
+									websocket.send(data);
+								}, 300);
+							}
+							
+							websocket.push(JSON.stringify({
+								data: data,
+								channel: channel
+							}));
+						};
+						websocket.onmessage = function(e) {
+							onmessage(JSON.parse(e.data));
+						};
+						return websocket;
+					};
+					// using firebase for signaling
+					// meeting.firebase = 'muazkh';
+					// if someone leaves; just remove his video
+					meeting.onuserleft = function (userid) {
+						var video = document.getElementById(userid);
+						if (video) video.parentNode.removeChild(video);
+					};
+					// check pre-created meeting rooms
+					meeting.check();
+					document.getElementById('setup-meeting').onclick = function () {
+						// setup new meeting room
+						var meetingRoomName = document.getElementById('meeting-name').value || 'Simple Meeting';
+						meeting.setup(meetingRoomName);
+						
+						this.disabled = true;
+						this.parentNode.innerHTML = '<h2><a href="' + location.href + '" target="_blank">Share this link</a></h2>';
+					};
+	
+	</script>
+
 	</body>
 </html>
